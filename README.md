@@ -20,11 +20,7 @@ People can indicate periods of availability on their calendars.
 
 People can indicate their travel capability.
 
-## 2.0 Skills
-
-People can create a public skill profile for themselves.
-
-## 3.1 CV capability
+## 2.0 Curriculum Vitae
 
 People can create a CV for themselves.
 
