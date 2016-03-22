@@ -1,5 +1,6 @@
 package io.mikael.talent.model
 
+import java.time.LocalDate
 import java.time.ZonedDateTime
 import javax.persistence.*
 
@@ -16,11 +17,23 @@ data class Project (
         var publicRecommendations: List<PersonToProjectRecommendation>? = null,
 
         @ManyToOne
-        var creator: Person? = null,
+        var source: Person? = null,
 
-        var created: ZonedDateTime? = null,
+        var createdAt: ZonedDateTime? = null,
 
-        var updated: ZonedDateTime? = null
+        var updatedAt: ZonedDateTime? = null,
+
+        var beginsAt: LocalDate? = null,
+
+        var endsAt: LocalDate? = null,
+
+        var country: String? = null,
+
+        var location: String? = null,
+
+        var name: String? = null,
+
+        var description: String? = null
 
 )
 
