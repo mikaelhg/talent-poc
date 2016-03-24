@@ -16,7 +16,7 @@ data class Person(
         @OneToMany(mappedBy = "target")
         var privateTargetRecommendations: List<ProjectToPersonRecommendation>? = null,
 
-        /** Someone recommended this person to a project in public. */
+        /** Someone recommended this person for a project in public. */
         @OneToMany(mappedBy = "target")
         var publicTargetRecommendations: List<PersonToProjectRecommendation>? = null,
 
@@ -24,7 +24,7 @@ data class Person(
         @OneToMany(mappedBy = "source")
         var privateSourceRecommendations: List<ProjectToPersonRecommendation>? = null,
 
-        /** This person recommended someone to a project in public. */
+        /** This person recommended someone for a project in public. */
         @OneToMany(mappedBy = "source")
         var publicSourceRecommendations: List<PersonToProjectRecommendation>? = null,
 
