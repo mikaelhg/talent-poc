@@ -38,6 +38,9 @@ data class PersonalAbility (
         @ManyToOne
         var skill: Skill? = null,
 
+        /** How interested the person is in applying this skill in their next project. */
+        var personalInterestLevel: Double? = 0.0,
+
         var createdAt: ZonedDateTime? = null,
 
         var modifiedAt: ZonedDateTime? = null,
