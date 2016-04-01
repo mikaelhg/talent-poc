@@ -1,3 +1,5 @@
+
+
 spring.jackson.serialization.INDENT_OUTPUT: true
 
 logging.level:
@@ -14,11 +16,12 @@ server:
   port: 8080
   address: 127.0.0.1
 
-management.port: -1
-
 spring:
   datasource:
     platform: h2
     url: "jdbc:h2:mem:;DB_CLOSE_ON_EXIT=FALSE"
+  data:
+    rest:
+      base-path: /rest
 
 spring.jpa.hibernate.ddl-auto: create-drop

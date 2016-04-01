@@ -47,6 +47,7 @@ data class PersonalAbility (
 
         var level: Int? = null,
 
+        /** A little story about the relationship between the person and their ability. */
         var comment: String? = null
 
 )
