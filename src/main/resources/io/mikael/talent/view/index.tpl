@@ -1,3 +1,6 @@
+package io.mikael.talent.view
+
+/*
 What's New
 
 This page provides value in two different ways for two different audiences:
@@ -13,3 +16,14 @@ B. 1.0:  For those who have logged in, it shows a "What's New" view of new
 
    1.2: As the user scrolls down the list of new information, projects and
    recommendations are marked as "seen".
+ */
+
+yieldUnescaped '<!DOCTYPE html>'
+html {
+    head {
+        title('index')
+    }
+    body {
+        h1("index 2")
+    }
+}
