@@ -3,9 +3,9 @@ package io.mikael.talent.view
 yieldUnescaped '<!DOCTYPE html>'
 html {
     head {
-        title("Error Page")
+        title('login')
     }
     body {
-        h1('Error Page')
+        h1("login")
     }
 }

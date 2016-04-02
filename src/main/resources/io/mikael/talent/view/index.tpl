@@ -21,9 +21,9 @@ B. 1.0:  For those who have logged in, it shows a "What's New" view of new
 yieldUnescaped '<!DOCTYPE html>'
 html {
     head {
-        title('index')
+        title('Talent POC')
     }
     body {
-        h1("index 2")
+        h1("Talent POC")
     }
 }
