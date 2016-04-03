@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2SsoDefaultConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.client.OAuth2RestTemplate
+import org.springframework.security.oauth2.provider.OAuth2Authentication
 import org.springframework.stereotype.Controller
 import org.springframework.ui.ModelMap
 import org.springframework.web.bind.annotation.RequestMethod.GET
@@ -26,7 +27,9 @@ open class Application : OAuth2SsoDefaultConfiguration() {
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
-        http.antMatcher("/**").authorizeRequests().anyRequest().authenticated()
+        http.authorizeRequests()
+            .regexMatchers("/", "/favicon.ico").permitAll()
+            .anyRequest().authenticated()
         YammerSsoSecurityConfigurer(this.myBeanFactory!!).configure(http)
     }
 
@@ -41,31 +44,21 @@ open class Application : OAuth2SsoDefaultConfiguration() {
 open class TemplateController {
 
     @http("/", method = arrayOf(GET))
-    fun index() = view("index")
-
-    @http("/zlogin", method = arrayOf(GET))
-    fun login() = view("login")
+    fun index(auth: OAuth2Authentication?) = ModelAndView("index", "auth", auth)
 
     @http("/project/{id}", method = arrayOf(GET))
-    fun project(@path id: Int): ModelAndView {
-        return view("project", "id", id)
-    }
+    fun project(@path id: Int) = ModelAndView("project", "id", id)
 
     @http("/{username}", method = arrayOf(GET))
-    fun person(@path username: String) = view("person", "username", username)
+    fun person(auth: OAuth2Authentication, @path username: String) =
+        ModelAndView("person", mapOf("auth" to auth, "username" to username))
 
     @http(value = "/user", method = arrayOf(GET))
     @ResponseBody
-    fun user(principal: Principal): Principal {
-        return principal
-    }
+    fun user(principal: Principal) = principal
 
 }
 
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
 }
-
-private fun view(viewName: String, model: ModelMap = ModelMap()) = ModelAndView(viewName, model)
-
-private fun view(viewName: String, key: String, value: Any) = ModelAndView(viewName, key, value)

@@ -6,6 +6,7 @@ html {
         title('person')
     }
     body {
-        h1("Person ")
+        h1("Person ${username}")
+        p("Current user: ${auth.userAuthentication.details.name}")
     }
 }

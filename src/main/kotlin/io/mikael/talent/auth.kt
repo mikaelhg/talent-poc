@@ -56,7 +56,7 @@ class YammerSsoSecurityConfigurer(private val beanFactory: BeanFactory) {
             RequestHeaderRequestMatcher("X-Requested-With", "XMLHttpRequest"))
     }
 
-    private fun oauth2SsoFilter(
+    internal fun oauth2SsoFilter(
         sso: OAuth2SsoProperties): OAuth2ClientAuthenticationProcessingFilter {
         val restTemplate = this.beanFactory.getBean(OAuth2RestOperations::class.java)
         val tokenServices = this.beanFactory.getBean(ResourceServerTokenServices::class.java)
@@ -66,15 +66,15 @@ class YammerSsoSecurityConfigurer(private val beanFactory: BeanFactory) {
         return filter
     }
 
-    class OAuth2ClientAuthenticationConfigurer(private val filter: OAuth2ClientAuthenticationProcessingFilter) : SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity>() {
-
+    internal class OAuth2ClientAuthenticationConfigurer(private val filter: OAuth2ClientAuthenticationProcessingFilter)
+        : SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity>()
+    {
         @Throws(Exception::class)
         override fun configure(builder: HttpSecurity?) {
             val ssoFilter = this.filter
             ssoFilter.setSessionAuthenticationStrategy(builder!!.getSharedObject(SessionAuthenticationStrategy::class.java))
             builder.addFilterAfter(ssoFilter, AbstractPreAuthenticatedProcessingFilter::class.java)
         }
-
     }
 
 }
