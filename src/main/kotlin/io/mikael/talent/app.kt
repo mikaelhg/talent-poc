@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2SsoDe
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.client.OAuth2RestTemplate
 import org.springframework.security.oauth2.provider.OAuth2Authentication
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher
 import org.springframework.stereotype.Controller
-import org.springframework.ui.ModelMap
 import org.springframework.web.bind.annotation.RequestMethod.GET
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.servlet.ModelAndView
@@ -27,9 +27,13 @@ open class Application : OAuth2SsoDefaultConfiguration() {
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
+
         http.authorizeRequests()
             .regexMatchers("/", "/favicon.ico").permitAll()
             .anyRequest().authenticated()
+            .and()
+            .logout().logoutRequestMatcher(AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+
         YammerSsoSecurityConfigurer(this.myBeanFactory!!).configure(http)
     }
 
@@ -41,10 +45,10 @@ open class Application : OAuth2SsoDefaultConfiguration() {
 }
 
 @Controller
-open class TemplateController {
+open class WebUserInterface {
 
     @http("/", method = arrayOf(GET))
-    fun index(auth: OAuth2Authentication?) = ModelAndView("index", "auth", auth)
+    fun whatsnew(auth: OAuth2Authentication?) = ModelAndView("index", "auth", auth)
 
     @http("/project/{id}", method = arrayOf(GET))
     fun project(@path id: Int) = ModelAndView("project", "id", id)

@@ -11,10 +11,12 @@ logging.level:
   org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 server:
-  port: 8080
+  port: 8090
   error:
     whitelabel:
       enabled: false
+  session:
+    timeout: 86400
 
 spring:
   datasource:
@@ -30,3 +32,21 @@ spring:
       suffix: .tpl
 
 spring.jpa.hibernate.ddl-auto: create-drop
+
+# override the secrets in a local configuration file, such as application-default.yml
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: xxx
+      clientSecret: xxx
+      accessTokenUri: https://www.yammer.com/oauth2/access_token
+      userAuthorizationUri: https://www.yammer.com/oauth2/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://www.yammer.com/api/v1/users/current.json
+      preferTokenInfo: false
+    sso:
+      login-path: /login

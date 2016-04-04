@@ -26,5 +26,7 @@ html {
     body {
         h1("Talent POC")
         p("Current user: ${auth?.userAuthentication?.details?.name}")
+        p(a("login", href:"/login"))
+        p(a("logout", href:"/logout"))
     }
 }
