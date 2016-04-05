@@ -1,11 +1,11 @@
 package io.mikael.talent.view
 
-yieldUnescaped '<!DOCTYPE html>'
-html {
-    head {
-        title('project')
-    }
-    body {
-        h1("project")
-    }
-}
+layout 'io/mikael/talent/view/layout-main.tpl', true,
+        title: 'Talent POC',
+        bodyContents: contents {
+            div (class: "container") {
+                div (class: "jumbotron") {
+                    h1 ("Talent POC - project")
+                }
+            }
+        }

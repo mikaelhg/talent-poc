@@ -4,6 +4,32 @@ import java.time.LocalDate
 import java.time.ZonedDateTime
 import javax.persistence.*
 
+enum class ProjectStatus {
+
+    /**
+     * Project definition has begun, but the project owner isn't yet ready to start looking for people.
+     * A project can also be set back to DRAFT status after having been OPEN or CLOSED.
+     *
+     * It will not be listed, and the project page is not accessible.
+     */
+    DRAFT,
+
+    /**
+     * The project is actively looking for people.
+     *
+     * It is listed, and the project page is accessible.
+     */
+    OPEN,
+
+    /**
+     * The project is not looking for people.
+     *
+     * It will not be listed, but the project page still remains accessible.
+     */
+    CLOSED
+
+}
+
 @Entity @Table(name = "projects")
 data class Project (
 
@@ -22,6 +48,8 @@ data class Project (
         var createdAt: ZonedDateTime? = null,
 
         var updatedAt: ZonedDateTime? = null,
+
+        var status: ProjectStatus? = null,
 
         var beginsAt: LocalDate? = null,
 

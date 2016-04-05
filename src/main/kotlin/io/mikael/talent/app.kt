@@ -29,7 +29,7 @@ open class Application : OAuth2SsoDefaultConfiguration() {
     override fun configure(http: HttpSecurity) {
 
         http.authorizeRequests()
-            .regexMatchers("/", "/favicon.ico").permitAll()
+            .regexMatchers("/", "/favicon.ico", "/webjars.*", "/static.*").permitAll()
             .anyRequest().authenticated()
             .and()
             .logout().logoutRequestMatcher(AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")

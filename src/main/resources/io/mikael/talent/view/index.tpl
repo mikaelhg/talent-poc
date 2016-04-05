@@ -18,15 +18,13 @@ B. 1.0:  For those who have logged in, it shows a "What's New" view of new
    recommendations are marked as "seen".
  */
 
-yieldUnescaped '<!DOCTYPE html>'
-html {
-    head {
-        title('Talent POC')
-    }
-    body {
-        h1("Talent POC")
-        p("Current user: ${auth?.userAuthentication?.details?.name}")
-        p(a("login", href:"/login"))
-        p(a("logout", href:"/logout"))
+layout 'io/mikael/talent/view/layout-main.tpl', true,
+        title: 'Talent POC',
+        bodyContents: contents {
+    div (class: "container") {
+        div (class: "jumbotron") {
+            h1 ("Talent POC")
+        }
+
     }
 }
