@@ -34,8 +34,11 @@ People can create a CV for themselves.
 
 People can print out each others' CVs.
 
+
 # How to run the program
 
 ```
 mvn clean spring-boot:run
 ```
+
+Point your browser to http://localhost:8090/
