@@ -33,3 +33,9 @@ People can indicate their vacation plans on their calendars.
 People can create a CV for themselves.
 
 People can print out each others' CVs.
+
+# How to run the program
+
+```
+mvn clean spring-boot:run
+```
