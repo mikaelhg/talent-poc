@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2SsoDe
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.oauth2.client.OAuth2RestTemplate
 import org.springframework.security.oauth2.provider.OAuth2Authentication
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher
+import org.springframework.security.web.util.matcher.RegexRequestMatcher
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMethod.GET
 import org.springframework.web.bind.annotation.ResponseBody
@@ -17,6 +17,10 @@ import org.springframework.web.servlet.ModelAndView
 import java.security.Principal
 import org.springframework.web.bind.annotation.PathVariable as path
 import org.springframework.web.bind.annotation.RequestMapping as http
+
+fun main(args: Array<String>) {
+    SpringApplication.run(Application::class.java, *args)
+}
 
 @SpringBootApplication
 @EnableOAuth2Sso
@@ -29,10 +33,14 @@ open class Application : OAuth2SsoDefaultConfiguration() {
     override fun configure(http: HttpSecurity) {
 
         http.authorizeRequests()
-            .regexMatchers("/", "/favicon.ico", "/webjars.*", "/static.*").permitAll()
-            .anyRequest().authenticated()
+            .regexMatchers("/", "/favicon.ico", "/webjars.*", "/static.*")
+                .permitAll()
+            .anyRequest()
+                .authenticated()
             .and()
-            .logout().logoutRequestMatcher(AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
+            .logout()
+                .logoutRequestMatcher(RegexRequestMatcher("/logout", "GET"))
+                .logoutSuccessUrl("/")
 
         YammerSsoSecurityConfigurer(this.myBeanFactory!!).configure(http)
     }
@@ -63,6 +71,3 @@ open class WebUserInterface {
 
 }
 
-fun main(args: Array<String>) {
-    SpringApplication.run(Application::class.java, *args)
-}

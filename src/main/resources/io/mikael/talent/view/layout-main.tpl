@@ -1,46 +1,42 @@
 yieldUnescaped '<!DOCTYPE html>'
 html (lang: "en") {
     head {
+        meta (charset: "utf-8")
+        meta (name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no")
+        meta ("http-equiv": "x-ua-compatible", content: "ie=edge")
         title (title)
-        link (rel: "stylesheet", href: "/webjars/bootstrap/3.3.6/css/bootstrap.min.css")
+        link (rel: "stylesheet", href: "/webjars/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css")
         link (rel: "stylesheet", href: "/static/app.css")
     }
 
     body {
 
-        nav (class: "navbar navbar-inverse navbar-static-top") {
-            div (class: "container") {
-                button (type: "button", class: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#navbar", "aria-expanded": "false", "aria-controls": "navbar") {
-                    div(class: "navbar-header") {
-                        span(class: "sr-only", "Toggle navigation")
-                        span(class: "icon-bar")
-                        span(class: "icon-bar")
-                        span(class: "icon-bar")
-                    }
+        nav(class: "navbar navbar-static-top navbar-dark bg-inverse") {
+            a(class: "navbar-brand", href: "/", title)
+
+            ul(class: "nav navbar-nav") {
+                li(class: "nav-item active") {
+                    a(class: "nav-link", href: "#", "Home")
                 }
-                a (class: "navbar-brand", href: "/", title)
-                div (id: "navbar", class: "collapse navbar-collapse") {
-                    ul (class: "nav navbar-nav") {
-                        li(class: "active") { a(href: "#", "Home") }
-                        li { a(href: "#about", "About") }
-                    }
-
-                    ul (class: "nav navbar-nav navbar-right") {
-                        if (auth) {
-                            li ("${auth?.userAuthentication?.details?.name}")
-                            li { a ("Logout", href: "/logout") }
-                        } else {
-                            li { a ("Login", href: "/login") }
-                        }
-                    }
-
+                li(class: "nav-item") {
+                    a(class: "nav-link", href: "#about", "About")
                 }
             }
+
+            ul(class: "nav navbar-nav pull-xs-right") {
+                if (auth) {
+                    li(class: "nav-item", "${auth?.userAuthentication?.details?.name}")
+                    li(class: "nav-item") { a(class: "nav-link", href: "/logout", "Logout") }
+                } else {
+                    li(class: "nav-item") { a(class: "nav-link", href: "/login", "Login") }
+                }
+            }
+
         }
 
         bodyContents()
 
-        script (src: "/webjars/jquery/1.11.1/jquery.js")
-        script (src: "/webjars/bootstrap/3.3.6/js/bootstrap.js")
+        script (src: "/webjars/jquery/2.2.2/jquery.js")
+        script (src: "/webjars/bootstrap/4.0.0-alpha.2/js/bootstrap.js")
     }
 }

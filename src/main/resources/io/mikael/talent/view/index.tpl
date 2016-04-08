@@ -18,13 +18,23 @@ B. 1.0:  For those who have logged in, it shows a "What's New" view of new
    recommendations are marked as "seen".
  */
 
-layout 'io/mikael/talent/view/layout-main.tpl', true,
-        title: 'Talent POC',
-        bodyContents: contents {
-    div (class: "container") {
-        div (class: "jumbotron") {
-            h1 ("Talent POC")
-        }
+def title = "Talents"
 
+def page = contents {
+    div (class: "jumbotron") {
+        div (class: "container") {
+            h1 (class: "display-3", title)
+            p ("Making happier people and easier projects.")
+            p ("Browse through projects, recommend your friends for projects, of projects to your friends.")
+            p ("Match people's skill sets and active interests with your open projects, to find motivated people.")
+            p {
+                a (class: "btn btn-primary btn-lg", role: "button", href: "/login", "Log in through Yammer &raquo;")
+            }
+        }
     }
 }
+
+layout 'io/mikael/talent/view/layout-main.tpl', true,
+    title: title,
+    bodyContents: page
+
