@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
-import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2SsoDefaultConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.oauth2.client.OAuth2RestTemplate
 import org.springframework.security.oauth2.provider.OAuth2Authentication
 import org.springframework.security.web.util.matcher.RegexRequestMatcher
@@ -24,12 +24,11 @@ fun main(args: Array<String>) {
 
 @SpringBootApplication
 @EnableOAuth2Sso
-open class Application : OAuth2SsoDefaultConfiguration() {
+open class Application : WebSecurityConfigurerAdapter() {
 
     @Autowired
-    open var myBeanFactory: BeanFactory? = null
+    lateinit var myBeanFactory: BeanFactory
 
-    @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
 
         http.authorizeRequests()
@@ -42,7 +41,7 @@ open class Application : OAuth2SsoDefaultConfiguration() {
                 .logoutRequestMatcher(RegexRequestMatcher("/logout", "GET"))
                 .logoutSuccessUrl("/")
 
-        YammerSsoSecurityConfigurer(this.myBeanFactory!!).configure(http)
+        YammerSsoSecurityConfigurer(this.myBeanFactory).configure(http)
     }
 
     @Autowired

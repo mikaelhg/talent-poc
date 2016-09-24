@@ -36,7 +36,8 @@ html (lang: "en") {
 
         bodyContents()
 
-        script (src: "/webjars/jquery/2.2.2/jquery.js")
+        script (src: "/webjars/jquery/3.0.0/jquery.js")
         script (src: "/webjars/bootstrap/4.0.0-alpha.2/js/bootstrap.js")
+
     }
 }
