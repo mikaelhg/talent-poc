@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Talents</title>
+</head>
+
+<body>
+
+<!--
+
+What's New
+
+This page provides value in two different ways for two different audiences:
+
+A. 1.0: For people who haven't logged in, it explains the concept behind the application.
+
+   1.2: Also, fancy screenshots or concept pics.
+
+B. 1.0:  For those who have logged in, it shows a "What's New" view of new
+   (unseen) projects, new recommendations, etc.
+
+   1.0: Under the new information, the user sees a list of currently open projects.
+
+   1.2: As the user scrolls down the list of new information, projects and
+   recommendations are marked as "seen".
+
+
+-->
+
+<h1 layout:fragment="header">Talents</h1>
+
+<div layout:fragment="content">
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Talents</h1>
+            <p>
+                Making happier people and easier projects.
+            </p><p>
+                Browse through projects, recommend your friends for projects, of projects to your friends.
+            </p><p>
+                Match people's skill sets and active interests with your open projects, to find motivated people.
+            </p><p>
+                <a class="btn btn-primary btn-lg">Log in</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
