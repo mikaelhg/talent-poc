@@ -28,7 +28,7 @@ verify:jdk8:
 
 
 deploy:jdk8:
-  stage: test
+  stage: deploy
   script:
     - 'mvn $MAVEN_CLI_OPTS package'
   only:
@@ -37,17 +37,3 @@ deploy:jdk8:
     paths:
     - target/*.jar
   image: maven:3
-
-
-pages:
-  image: busybox:latest
-  stage: deploy
-  script:
-    - mv target/staging public
-  dependencies:
-    - deploy:jdk8
-  artifacts:
-    paths:
-    - public
-  only:
-    - master
