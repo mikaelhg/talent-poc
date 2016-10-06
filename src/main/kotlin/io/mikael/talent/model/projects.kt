@@ -3,6 +3,7 @@ package io.mikael.talent.model
 import java.time.LocalDate
 import java.time.ZonedDateTime
 import javax.persistence.*
+import javax.persistence.GenerationType.IDENTITY
 
 enum class ProjectStatus {
 
@@ -33,7 +34,7 @@ enum class ProjectStatus {
 @Entity @Table(name = "projects")
 data class Project (
 
-        @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+        @Id @GeneratedValue(strategy = IDENTITY)
         var id: Long? = null,
 
         @OneToMany(mappedBy = "project")
@@ -71,7 +72,7 @@ data class Project (
 @Entity @Table(name = "recommend_people_for_projects")
 data class PersonToProjectRecommendation (
 
-        @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+        @Id @GeneratedValue(strategy = IDENTITY)
         var id: Long? = null,
 
         @ManyToOne
@@ -92,7 +93,7 @@ data class PersonToProjectRecommendation (
 @Entity @Table(name = "recommend_projects_to_people")
 data class ProjectToPersonRecommendation (
 
-        @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+        @Id @GeneratedValue(strategy = IDENTITY)
         var id: Long? = null,
 
         @ManyToOne
