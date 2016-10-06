@@ -20,11 +20,11 @@ cache:
 
 validate:jdk8:
   <<: *validate
-  image: maven:3-jdk8
+  image: maven:3
 
 verify:jdk8:
   <<: *verify
-  image: maven:3-jdk8
+  image: maven:3
 
 
 deploy:jdk8:
@@ -36,7 +36,7 @@ deploy:jdk8:
   artifacts:
     paths:
     - target/*.jar
-  image: maven:3-jdk8
+  image: maven:3
 
 
 pages:
