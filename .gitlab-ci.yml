@@ -1,4 +1,4 @@
 image: maven:3
 
 build:
-  script: "mvn install -B"
+  script: "mvn install -B -q"
