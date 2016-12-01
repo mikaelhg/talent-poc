@@ -19,6 +19,10 @@ $color-primary: $palette-purple-500;
 $color-primary-dark: $palette-deep-purple-700;
 $color-accent: $palette-pink-A200;
 
+//@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+
+// Top level styles
+
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
 }
