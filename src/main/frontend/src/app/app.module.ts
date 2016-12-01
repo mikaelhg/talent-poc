@@ -6,14 +6,12 @@ import {MaterialModule} from "@angular/material";
 import {AppComponent} from "./app.component";
 import {DrawerComponent} from "./drawer/drawer.component";
 import {HeaderComponent} from "./header/header.component";
-import {MDL} from "./directives";
 
 @NgModule({
   declarations: [
     AppComponent,
     DrawerComponent,
-    HeaderComponent,
-    MDL
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
