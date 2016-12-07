@@ -1,4 +1,4 @@
-import {Component, ElementRef} from "@angular/core";
+import {Component, ElementRef, HostBinding} from "@angular/core";
 import {MaterialComponent} from "../core";
 
 @Component({
@@ -7,6 +7,9 @@ import {MaterialComponent} from "../core";
   styleUrls: ['./drawer.component.css']
 })
 export class DrawerComponent extends MaterialComponent {
+
+  @HostBinding('class.mdl-layout__drawer')
+  public mdlLayoutDrawer: boolean = true;
 
   constructor(_element: ElementRef) {
     super(_element);

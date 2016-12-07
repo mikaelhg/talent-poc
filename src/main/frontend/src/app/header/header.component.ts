@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef} from "@angular/core";
+import {Component, ElementRef, HostBinding} from "@angular/core";
 import {MaterialComponent} from "../core";
 
 @Component({
@@ -7,6 +7,12 @@ import {MaterialComponent} from "../core";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent extends MaterialComponent {
+
+  @HostBinding('class.mdl-layout__header')
+  public mdlLayoutHeader: boolean = true;
+
+  @HostBinding('class.mdl-layout__header--scroll')
+  public mdlJsLayoutHeaderScroll: boolean = true;
 
   constructor(_element: ElementRef) {
     super(_element);

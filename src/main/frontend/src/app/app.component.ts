@@ -1,4 +1,4 @@
-import {Component, NgZone, ElementRef} from "@angular/core";
+import {Component, NgZone, ElementRef, HostBinding} from "@angular/core";
 import {MaterialComponent} from "./core";
 
 @Component({
@@ -7,6 +7,12 @@ import {MaterialComponent} from "./core";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends MaterialComponent {
+
+  @HostBinding('class.mdl-layout')
+  public mdlLayout: boolean = true;
+
+  @HostBinding('class.mdl-js-layout')
+  public mdlJsLayout: boolean = true;
 
   constructor(private zone: NgZone, _element: ElementRef) {
     super(_element);

@@ -1,6 +1,6 @@
 import {AfterViewInit, ElementRef} from "@angular/core";
 
-declare var componentHandler: any;
+declare let componentHandler: any;
 
 export class MaterialComponent implements AfterViewInit {
 
