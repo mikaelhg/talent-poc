@@ -8,6 +8,8 @@ import {MaterialComponent} from "../core";
 })
 export class HeaderComponent extends MaterialComponent {
 
+  public title: string = 'Talent POC';
+
   @HostBinding('class.mdl-layout__header')
   public mdlLayoutHeader: boolean = true;
 
