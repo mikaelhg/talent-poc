@@ -139,7 +139,7 @@
 				<version>1.2</version>
 				<configuration>
 					<workingDirectory>src/main/frontend</workingDirectory>
-					<nodeVersion>v7.1.0</nodeVersion>
+					<nodeVersion>v6.9.2</nodeVersion>
 					<installDirectory>target</installDirectory>
 				</configuration>
 				<executions>
