@@ -6,6 +6,7 @@ import {MaterialModule} from "@angular/material";
 import {AppComponent} from "./app.component";
 import {DrawerComponent} from "./drawer/drawer.component";
 import {HeaderComponent} from "./header/header.component";
+import {RlTagInputModule} from 'angular2-tag-input';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HeaderComponent} from "./header/header.component";
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule
+    MaterialModule,
+    RlTagInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
