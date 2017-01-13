@@ -8,6 +8,8 @@ import {DrawerComponent} from "./drawer/drawer.component";
 import {HeaderComponent} from "./header/header.component";
 import {RlTagInputModule} from 'angular2-tag-input';
 
+import 'hammerjs';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import {RlTagInputModule} from 'angular2-tag-input';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule,
+    MaterialModule.forRoot(),
     RlTagInputModule
   ],
   providers: [],
