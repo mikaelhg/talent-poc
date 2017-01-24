@@ -1,21 +1,28 @@
-import {Component, NgZone, ElementRef, HostBinding} from "@angular/core";
-import {MaterialComponent} from "./core";
+import {Component, AfterViewInit} from "@angular/core";
+import {correctHeight, detectBody} from "./app.helpers";
+
+declare const jQuery: JQueryStatic;
 
 @Component({
-  selector: '#app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent extends MaterialComponent {
+export class AppComponent implements AfterViewInit {
 
-  @HostBinding('class.mdl-layout')
-  public mdlLayout: boolean = true;
+  public ngAfterViewInit() {
+    // Run correctHeight function on load and resize window event
+    jQuery(window).bind("load resize", function () {
+      correctHeight();
+      detectBody();
+    });
 
-  @HostBinding('class.mdl-js-layout')
-  public mdlJsLayout: boolean = true;
-
-  constructor(private zone: NgZone, _element: ElementRef) {
-    super(_element);
+    // Correct height of wrapper after metisMenu animation.
+    jQuery('.metismenu a').click(() => {
+      setTimeout(() => {
+        correctHeight();
+      }, 300)
+    });
   }
 
 }
