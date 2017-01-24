@@ -173,7 +173,7 @@
 						</goals>
 						<phase>generate-resources</phase>
 						<configuration>
-							<arguments>run build</arguments>
+							<arguments>run ci-build</arguments>
 						</configuration>
 					</execution>
 				</executions>

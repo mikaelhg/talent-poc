@@ -1,3 +1,5 @@
+image: maven:3
+
 variables:
   MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true"
   MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
@@ -7,28 +9,19 @@ cache:
     - "$HOME/.m2/repository/"
     - /root/.m2/repository/
 
-.validate: &validate
+validate:
   stage: build
   script:
     - 'mvn $MAVEN_CLI_OPTS compile'
 
-.verify: &verify
+verify:
   stage: test
   script:
     - 'mvn $MAVEN_CLI_OPTS test'
   except:
     - master
 
-validate:jdk8:
-  <<: *validate
-  image: maven:3
-
-verify:jdk8:
-  <<: *verify
-  image: maven:3
-
-
-deploy:jdk8:
+deploy:
   stage: deploy
   script:
     - 'mvn $MAVEN_CLI_OPTS package'
@@ -37,4 +30,3 @@ deploy:jdk8:
   artifacts:
     paths:
     - target/*.jar
-  image: maven:3
