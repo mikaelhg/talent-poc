@@ -6,6 +6,7 @@ import {BasicLayout} from "./components/common/layouts/basic.component";
 import {TeamsComponent} from "./views/teams/teams.component";
 import {ProjectsComponent} from "./views/projects/projects.component";
 import {PeopleComponent} from "./views/people/people.component";
+import {PersonDetailComponent} from "./views/people/person-detail.component";
 
 export const ROUTES: Routes = [
   {path: '', redirectTo: 'projects', pathMatch: 'full'},
@@ -14,9 +15,12 @@ export const ROUTES: Routes = [
     path: '', component: BasicLayout,
     children: [
       {path: 'projects', component: ProjectsComponent},
+      {path: 'projects/:id', component: ProjectsComponent},
       {path: 'people', component: PeopleComponent},
-      {path: 'mycv', component: PeopleComponent},
-      {path: 'teams', component: TeamsComponent}
+      {path: 'people/:id', component: PersonDetailComponent},
+      {path: 'teams', component: TeamsComponent},
+      {path: 'teams/:id', component: TeamsComponent},
+      {path: 'mycv', component: PeopleComponent}
     ]
   },
   {

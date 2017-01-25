@@ -17,6 +17,7 @@ import {LayoutsModule} from "./components/common/layouts/layouts.module";
 import {TeamsModule} from "./views/teams/teams.module";
 import {ProjectsModule} from "./views/projects/projects.module";
 import {PeopleModule} from "./views/people/people.module";
+import {PeopleService} from "./services/people.service";
 
 
 @NgModule({
@@ -40,7 +41,10 @@ import {PeopleModule} from "./views/people/people.module";
     LayoutsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    PeopleService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
