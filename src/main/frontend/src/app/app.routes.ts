@@ -1,31 +1,31 @@
 import {Routes} from "@angular/router";
-import {mainViewComponent} from "./views/main-view/main-view.component";
-import {minorViewComponent} from "./views/minor-view/minor-view.component";
-import {loginComponent} from "./views/login/login.component";
-import {registerComponent} from "./views/register/register.component";
-import {blankComponent} from "./components/common/layouts/blank.component";
-import {basicComponent} from "./components/common/layouts/basic.component";
+import {LoginComponent} from "./views/login/login.component";
+import {RegisterComponent} from "./views/register/register.component";
+import {BlankLayout} from "./components/common/layouts/blank.component";
+import {BasicLayout} from "./components/common/layouts/basic.component";
+import {TeamsComponent} from "./views/teams/teams.component";
+import {ProjectsComponent} from "./views/projects/projects.component";
+import {PeopleComponent} from "./views/people/people.component";
 
 export const ROUTES: Routes = [
-  // Main redirect
-  {path: '', redirectTo: 'mainView', pathMatch: 'full'},
+  {path: '', redirectTo: 'projects', pathMatch: 'full'},
 
-  // App views
   {
-    path: '', component: basicComponent,
+    path: '', component: BasicLayout,
     children: [
-      {path: 'mainView', component: mainViewComponent},
-      {path: 'minorView', component: minorViewComponent}
+      {path: 'projects', component: ProjectsComponent},
+      {path: 'people', component: PeopleComponent},
+      {path: 'mycv', component: PeopleComponent},
+      {path: 'teams', component: TeamsComponent}
     ]
   },
   {
-    path: '', component: blankComponent,
+    path: '', component: BlankLayout,
     children: [
-      {path: 'login', component: loginComponent},
-      {path: 'register', component: registerComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent}
     ]
   },
 
-  // Handle all other routes
-  {path: '**', component: mainViewComponent}
+  {path: '**', component: ProjectsComponent}
 ];

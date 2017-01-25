@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {RegisterComponent} from "./register.component";
+import {PeopleComponent} from "./people.component";
 
 @NgModule({
-    declarations: [RegisterComponent],
+    declarations: [PeopleComponent],
     imports     : [BrowserModule],
 })
 
-export class RegisterModule {}
+export class PeopleModule {}

@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {minorViewComponent} from "./minor-view.component";
+import {ProjectsComponent} from "./projects.component";
 
 @NgModule({
-    declarations: [minorViewComponent],
+    declarations: [ProjectsComponent],
     imports     : [BrowserModule],
 })
 
-export class MinorViewModule {}
+export class ProjectsModule {}

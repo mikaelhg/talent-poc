@@ -6,5 +6,5 @@ declare const jQuery: JQueryStatic;
     selector: 'basic',
     templateUrl: './basic.template.html'
 })
-export class basicComponent {
+export class BasicLayout {
 }

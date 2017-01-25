@@ -6,7 +6,7 @@ declare const jQuery: JQueryStatic;
     selector: 'blank',
     templateUrl: './blank.template.html'
 })
-export class blankComponent implements AfterViewInit, OnDestroy {
+export class BlankLayout implements AfterViewInit, OnDestroy {
 
     public ngAfterViewInit() {
         jQuery('body').addClass('gray-bg');

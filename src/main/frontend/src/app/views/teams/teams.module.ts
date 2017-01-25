@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
-import {mainViewComponent} from "./main-view.component";
+import {TeamsComponent} from "./teams.component";
 
 @NgModule({
-    declarations: [mainViewComponent],
+    declarations: [TeamsComponent],
     imports     : [BrowserModule],
 })
 
-export class MainViewModule {}
+export class TeamsModule {}

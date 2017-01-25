@@ -6,8 +6,8 @@ variables:
 
 cache:
   paths:
-    - "$HOME/.m2/repository/"
     - /root/.m2/repository/
+    - /root/.npm/
 
 validate:
   stage: build

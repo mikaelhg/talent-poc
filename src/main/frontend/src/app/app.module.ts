@@ -10,12 +10,13 @@ import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 import {AppComponent} from "./app.component";
 import {ROUTES} from "./app.routes";
 
-import {MainViewModule} from "./views/main-view/main-view.module";
-import {MinorViewModule} from "./views/minor-view/minor-view.module";
 import {LoginModule} from "./views/login/login.module";
 import {RegisterModule} from "./views/register/register.module";
 
 import {LayoutsModule} from "./components/common/layouts/layouts.module";
+import {TeamsModule} from "./views/teams/teams.module";
+import {ProjectsModule} from "./views/projects/projects.module";
+import {PeopleModule} from "./views/people/people.module";
 
 
 @NgModule({
@@ -29,8 +30,10 @@ import {LayoutsModule} from "./components/common/layouts/layouts.module";
 
     RlTagInputModule,
 
-    MainViewModule,
-    MinorViewModule,
+    ProjectsModule,
+    PeopleModule,
+    TeamsModule,
+
     LoginModule,
     RegisterModule,
 
