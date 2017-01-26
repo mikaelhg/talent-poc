@@ -1,0 +1,43 @@
+$light-gray: #D1DADE;
+$label-badge-color: #5E5E5E;
+
+.tag-container {
+  display: inline-block;
+  line-height: 2em;
+}
+
+.app-tag {
+  background-color: $light-gray;
+  color: $label-badge-color;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 2em;
+  font-weight: 600;
+  padding: 3px 8px;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.tag-skill {
+  @extend .app-tag;
+  background-color: #1ab394;
+  color: #FFFFFF;
+}
+
+.tag-role {
+  @extend .app-tag;
+  background-color: #1c84c6;
+  color: #FFFFFF;
+}
+
+.tag-location {
+  @extend .app-tag;
+  background-color: #f8ac59;
+  color: #ffffff;
+}
+
+.tag-interest {
+  @extend .app-tag;
+  background-color: #666;
+  color: #ffffff;
+}

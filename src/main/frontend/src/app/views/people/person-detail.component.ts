@@ -4,11 +4,12 @@ import {PeopleService, Person} from "../../services/people.service";
 
 @Component({
   selector: 'personDetailComponent',
-  templateUrl: './person-detail.template.html'
+  templateUrl: './person-detail.template.html',
+  styleUrls: [ './person-detail.template.scss' ]
 })
 export class PersonDetailComponent implements AfterViewInit, OnInit {
 
-  private person: Person;
+  public person: Person;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: PeopleService) {
   }

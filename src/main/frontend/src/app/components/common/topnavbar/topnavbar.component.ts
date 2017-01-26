@@ -9,9 +9,16 @@ declare const jQuery: JQueryStatic;
 })
 export class TopnavbarComponent {
 
+    private searchTerm: string;
+
     public toggleNavigation(): void {
         jQuery("body").toggleClass("mini-navbar");
         smoothlyMenu();
+    }
+
+    public submitSearch(): void {
+      console.log(this.searchTerm);
+      this.searchTerm = '';
     }
 
 }

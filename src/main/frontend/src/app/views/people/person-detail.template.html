@@ -1,28 +1,28 @@
-<div class="row wrapper border-bottom white-bg page-heading">
-  <div class="col-lg-10">
-    <h2>People</h2>
-  </div>
-</div>
-
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper wrapper-content">
 
   <div class="row m-b-lg m-t-lg">
-    <div class="col-md-6">
 
+    <div class="col-md-6">
       <div class="profile-image">
-        <img src="https://pbs.twimg.com/profile_images/673420359874428928/EZztR797.jpg"
-             class="img-circle circle-border m-b-md" alt="profile" width="128">
+        <img [src]="person.picture" class="img-circle circle-border m-b-md" alt="profile" width="128">
       </div>
       <div class="profile-info">
         <div class="">
           <div>
-            <h2 class="no-margins">
-              Sauli Niinistö
-            </h2>
-            <h4>President of Finland</h4>
-            <small>
-              A lawyer by education, Niinistö was Minister of Finance from 1996 to 2003 and the National Coalition Party (NCP) candidate in the 2006 presidential election. He served as the Speaker of the Parliament of Finland from 2007 to 2011 and has been the Honorary President of the European People's Party since 2002.
-            </small>
+            <h2 class="no-margins">{{ person.name }}</h2>
+            <h4>{{ person.title }}</h4>
+            <p>{{ person.description }}</p>
+            <div class="tab-container">
+              <span *ngFor="let tag of person.locations">
+                <span class="tag-location">{{ tag }}</span>
+              </span>
+                <span *ngFor="let tag of person.roles">
+                <span class="tag-role">{{ tag }}</span>
+              </span>
+                <span *ngFor="let tag of person.skills">
+                <span class="tag-skill">{{ tag }}</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -32,37 +32,19 @@
       <table class="table small m-b-xs">
         <tbody>
         <tr>
-          <td>
-            <strong>142</strong> Projects
-          </td>
-          <td>
-            <strong>22</strong> Followers
-          </td>
+          <td><strong>142</strong> Projects</td>
+          <td><strong>22</strong> Followers</td>
         </tr>
         <tr>
-          <td>
-            <strong>61</strong> Comments
-          </td>
-          <td>
-            <strong>54</strong> Articles
-          </td>
+          <td><strong>61</strong> Comments</td>
+          <td><strong>54</strong> Articles</td>
         </tr>
         <tr>
-          <td>
-            <strong>154</strong> Tags
-          </td>
-          <td>
-            <strong>32</strong> Friends
-          </td>
+          <td><strong>154</strong> Tags</td>
+          <td><strong>32</strong> Friends</td>
         </tr>
         </tbody>
       </table>
-    </div>
-
-    <div class="col-md-3">
-      <small>Sales in last 24h</small>
-      <h2 class="no-margins">206 480</h2>
-      <div id="sparkline1"></div>
     </div>
 
   </div>
@@ -73,40 +55,7 @@
 
       <div class="ibox">
         <div class="ibox-content">
-          <h3>About Sauli Niinistö</h3>
-
-          <p class="small">
-            <span class="label label-success">Espoo</span>
-            <span class="label">Developer</span>
-          </p>
-
-          <p class="small">
-            Niinistö was the NCP candidate for a second time in the 2012 presidential election.
-          </p>
-          <p class="small">
-            With 37.0% of the vote, he won the election's first round and faced off against Haavisto of the Green League in the decisive second round.
-          </p>
-          <p class="small">
-            He carried the second round with around 62.6% against Haavisto's 37.4%. Niinistö's margin of victory was larger than that of any previous directly elected president. He won a majority in 14 of 15 electoral districts.
-          </p>
-          <p class="small">
-            Niinistö's election budget was circa 1.2 million euros.
-          </p>
-
-          <p class="small font-bold">
-            <span><i class="fa fa-circle text-navy"></i> Online status</span>
-          </p>
-
-        </div>
-      </div>
-
-      <div class="ibox">
-        <div class="ibox-content">
-          <h3>Followers and friends</h3>
-          <p class="small">
-            If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
-            anything embarrassing
-          </p>
+          <h3>Teams</h3>
           <div class="user-friends">
             <a href=""><img alt="image" class="img-circle" src="http://webapplayers.com/inspinia_admin-v2.7/img/a3.jpg"></a>
             <a href=""><img alt="image" class="img-circle" src="http://webapplayers.com/inspinia_admin-v2.7/img/a1.jpg"></a>
@@ -124,38 +73,16 @@
 
       <div class="ibox">
         <div class="ibox-content">
-          <h3>Personal friends</h3>
-          <ul class="list-unstyled file-list">
-            <li><a href=""><i class="fa fa-file"></i> Project_document.docx</a></li>
-            <li><a href=""><i class="fa fa-file-picture-o"></i> Logo_zender_company.jpg</a></li>
-            <li><a href=""><i class="fa fa-stack-exchange"></i> Email_from_Alex.mln</a></li>
-            <li><a href=""><i class="fa fa-file"></i> Contract_20_11_2014.docx</a></li>
-            <li><a href=""><i class="fa fa-file-powerpoint-o"></i> Presentation.pptx</a></li>
-            <li><a href=""><i class="fa fa-file"></i> 10_08_2015.docx</a></li>
-          </ul>
+          <h3>Interests</h3>
+          <div>
+            <span class="label">Fishing</span>
+            <span class="label">Fishing</span>
+            <span class="label">Fishing</span>
+            <span class="label">Fishing</span>
+          </div>
         </div>
       </div>
 
-      <div class="ibox">
-        <div class="ibox-content">
-          <h3>Private message</h3>
-
-          <p class="small">
-            Send private message to Alex Smith
-          </p>
-
-          <div class="form-group">
-            <label>Subject</label>
-            <input type="email" class="form-control" placeholder="Message subject">
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea class="form-control" placeholder="Your message" rows="3"></textarea>
-          </div>
-          <button class="btn btn-primary btn-block">Send</button>
-
-        </div>
-      </div>
 
     </div>
 
@@ -275,7 +202,6 @@
             in their infancy. Packages and web page editors now use Lorem Ipsum as their
             default model text.
           </p>
-          <img src="http://webapplayers.com/inspinia_admin-v2.7/img/gallery/3.jpg" class="img-responsive">
           <div class="btn-group">
             <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button>
             <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button>
@@ -352,15 +278,16 @@
           </div>
 
           <div class="vertical-timeline-content">
-            <h2>Meeting</h2>
-            <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing
-              and products. Below please find the current status of the sale.
+            <h2>Acme Corp - Intranet</h2>
+            <div>
+              <span class="tag-role">Architect</span>
+              <span class="tag-skill">SharePoint</span>
+            </div>
+            <p>
+              This is a project description. It gives the reader an idea of what you've been up to recently,
+              and whether this experience can significantly impact the customer's purchase decision.
             </p>
-            <a href="#" class="btn btn-sm btn-primary"> More info</a>
-            <span class="vertical-date">
-                                        Today <br>
-                                        <small>Dec 24</small>
-                                    </span>
+            <span class="vertical-date"><small>Apr 2016 - </small></span>
           </div>
         </div>
 
@@ -370,14 +297,19 @@
           </div>
 
           <div class="vertical-timeline-content">
-            <h2>Send documents to Mike</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-              industry's standard dummy text ever since.</p>
-            <a href="#" class="btn btn-sm btn-success"> Download document </a>
-            <span class="vertical-date">
-                                        Today <br>
-                                        <small>Dec 24</small>
-                                    </span>
+            <h2>Globex - Publishing platform</h2>
+            <div>
+              <span class="tag-role">Developer</span>
+              <span class="tag-skill">Java</span>
+              <span class="tag-skill">Spring</span>
+              <span class="tag-skill">PostgreSQL</span>
+              <span class="tag-skill">Agile</span>
+            </div>
+            <p>
+              This is a project description. It gives the reader an idea of what you've been up to recently,
+              and whether this experience can significantly impact the customer's purchase decision.
+            </p>
+            <span class="vertical-date"><small>Feb 2014 - Apr 2016</small></span>
           </div>
         </div>
 
@@ -387,39 +319,25 @@
           </div>
 
           <div class="vertical-timeline-content">
-            <h2>Coffee Break</h2>
-            <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's. </p>
-            <a href="#" class="btn btn-sm btn-info">Read more</a>
-            <span class="vertical-date"> Yesterday <br><small>Dec 23</small></span>
+            <h2>Soylent - Coffee website</h2>
+            <div>
+              <span class="tag-role">Architect</span>
+              <span class="tag-role">Project Manager</span>
+              <span class="tag-role">Developer</span>
+              <span class="tag-skill">Python</span>
+              <span class="tag-skill">Flask</span>
+              <span class="tag-skill">PostgreSQL</span>
+              <span class="tag-skill">Agile</span>
+            </div>
+            <p>
+              Go to shop and find some products.
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's.
+            </p>
+            <span class="vertical-date"><small>Feb 2012 - Apr 2014</small></span>
           </div>
         </div>
 
-        <div class="vertical-timeline-block">
-          <div class="vertical-timeline-icon yellow-bg">
-            <i class="fa fa-phone"></i>
-          </div>
-
-          <div class="vertical-timeline-content">
-            <h2>Phone with Jeronimo</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic
-              quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-            <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
-          </div>
-        </div>
-
-        <div class="vertical-timeline-block">
-          <div class="vertical-timeline-icon navy-bg">
-            <i class="fa fa-comments"></i>
-          </div>
-
-          <div class="vertical-timeline-content">
-            <h2>Chat with Monica and Sandra</h2>
-            <p>Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident,
-              sometimes on purpose (injected humour and the like). </p>
-            <span class="vertical-date">Yesterday <br><small>Dec 23</small></span>
-          </div>
-        </div>
       </div>
 
     </div>

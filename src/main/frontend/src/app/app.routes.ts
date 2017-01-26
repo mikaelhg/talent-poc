@@ -20,7 +20,7 @@ export const ROUTES: Routes = [
       {path: 'people/:id', component: PersonDetailComponent},
       {path: 'teams', component: TeamsComponent},
       {path: 'teams/:id', component: TeamsComponent},
-      {path: 'mycv', component: PeopleComponent}
+      {path: 'profile', component: PeopleComponent}
     ]
   },
   {
