@@ -9,30 +9,30 @@ import javax.persistence.*
 @Entity @Table(name = "people")
 data class Person(
 
-        @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-        var id: Long? = null,
+    @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    var id: Long? = null,
 
-        /** Someone recommended a project to this person in private. */
-        @OneToMany(mappedBy = "target")
-        var privateTargetRecommendations: List<ProjectToPersonRecommendation>? = null,
+    /** Someone recommended a project to this person in private. */
+    @OneToMany(mappedBy = "target")
+    var privateTargetRecommendations: List<ProjectToPersonRecommendation>? = null,
 
-        /** Someone recommended this person for a project in public. */
-        @OneToMany(mappedBy = "target")
-        var publicTargetRecommendations: List<PersonToProjectRecommendation>? = null,
+    /** Someone recommended this person for a project in public. */
+    @OneToMany(mappedBy = "target")
+    var publicTargetRecommendations: List<PersonToProjectRecommendation>? = null,
 
-        /** This person recommended a project to someone in private. */
-        @OneToMany(mappedBy = "source")
-        var privateSourceRecommendations: List<ProjectToPersonRecommendation>? = null,
+    /** This person recommended a project to someone in private. */
+    @OneToMany(mappedBy = "source")
+    var privateSourceRecommendations: List<ProjectToPersonRecommendation>? = null,
 
-        /** This person recommended someone for a project in public. */
-        @OneToMany(mappedBy = "source")
-        var publicSourceRecommendations: List<PersonToProjectRecommendation>? = null,
+    /** This person recommended someone for a project in public. */
+    @OneToMany(mappedBy = "source")
+    var publicSourceRecommendations: List<PersonToProjectRecommendation>? = null,
 
-        @OneToMany(mappedBy = "target")
-        var personalAbilities: List<PersonalAbility>? = null,
+    @OneToMany(mappedBy = "target")
+    var personalAbilities: List<PersonalAbility>? = null,
 
-        var username: String? = null,
+    var username: String? = null,
 
-        var lastSeenAt: ZonedDateTime? = null
+    var lastSeenAt: ZonedDateTime? = null
 
 )

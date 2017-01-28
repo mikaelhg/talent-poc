@@ -6,7 +6,7 @@ import javax.persistence.*
  * A customer, an employer.
  */
 @Entity @Table(name = "organizations")
-data class Organization (
+data class Organization(
 
     @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
     var id: Long? = null,
