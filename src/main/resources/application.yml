@@ -16,6 +16,7 @@ server:
       enabled: false
   session:
     timeout: 86400
+  port: 9090
 
 spring:
   datasource:

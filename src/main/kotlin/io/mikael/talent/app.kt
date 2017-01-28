@@ -12,22 +12,4 @@ fun main(args: Array<String>) {
 }
 
 @SpringBootApplication
-open class Application {
-
-}
-
-@Controller
-open class WebUserInterface {
-
-    @GetMapping("/")
-    fun whatsnew() = "index"
-
-    @GetMapping("/project/{id}")
-    fun project(@path id: Int) = ModelAndView("project", "id", id)
-
-    @GetMapping("/{username}")
-    fun person(@path username: String) =
-        ModelAndView("person", mapOf("username" to username))
-
-}
-
+open class Application

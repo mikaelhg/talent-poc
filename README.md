@@ -41,4 +41,13 @@ People can print out each others' CVs.
 mvn clean spring-boot:run
 ```
 
-Point your browser to http://localhost:8090/
+Point your browser to http://localhost:9090/
+
+
+# How to develop the frontend and backend without having to do complete rebuilds
+
+1. Start the backend with IDEA using the `main` runner.
+
+2. In the IDEA terminal, run `ng serve --watch` which will continuously rebuild the frontend.
+
+3. Reload http://localhost:9090/ to refresh the frontend.

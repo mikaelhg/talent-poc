@@ -14,6 +14,7 @@ data class Organization (
     /**
      * Is this organization subsidiary to a larger one?
      */
+    @ManyToOne
     var parent: Organization? = null,
 
     var name: String? = null,
