@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource
 @RepositoryRestResource
 interface ProjectRepository : JpaRepository<Project, Long>
 
-@RepositoryRestResource
+@RepositoryRestResource(path = "people", collectionResourceRel = "people")
 interface PersonRepository : JpaRepository<Person, Long>
 
 @RepositoryRestResource

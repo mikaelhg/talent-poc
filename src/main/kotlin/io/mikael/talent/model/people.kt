@@ -33,6 +33,8 @@ data class Person(
 
     var username: String? = null,
 
+    var name: String? = null,
+
     var lastSeenAt: ZonedDateTime? = null
 
 )
