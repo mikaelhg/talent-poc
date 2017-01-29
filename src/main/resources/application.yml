@@ -20,7 +20,10 @@ server:
 
 spring:
   datasource:
-    url: "jdbc:h2:mem:;DB_CLOSE_ON_EXIT=FALSE"
+    url: "jdbc:h2:mem:"
   data:
     rest:
       base-path: /rest
+  jpa:
+    hibernate:
+      ddl-auto: none
