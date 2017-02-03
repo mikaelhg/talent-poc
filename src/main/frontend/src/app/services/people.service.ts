@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 
 export class Person {
 
+  public id: number;
+
   public name: string;
 
   public title: string;
@@ -24,8 +26,9 @@ export class Person {
 @Injectable()
 export class PeopleService {
 
-  private data = {
-    1: {
+  private data = [
+    {
+      id: 1,
       name: 'Donald Duck',
       title: 'Technical Architect',
       description: `Donald Duck is a cartoon character created in 1934 at Walt Disney Productions.
@@ -38,17 +41,19 @@ export class PeopleService {
       interests: ['IoT', 'Kotlin'],
       picture: 'http://wondersofdisney.webs.com/pals/donald/donangryface.png'
     },
-    2: {
+    {
+      id: 2,
       name: 'Mickey Mouse',
       title: 'Interaction Designer',
       description: ``,
-      locations: ['Helsinki'],
+      locations: ['Tampere'],
       roles: ['Designer', 'Frontend Developer'],
       skills: ['Angular 2', 'React.JS', 'Mobile', 'Full Stack'],
       interests: ['Mobile', 'TypeScript'],
-      picture: 'http://wondersofdisney.webs.com/pals/donald/donangryface.png'
+      picture: 'http://wondersofdisney.webs.com/mickeymouse/mickfaces/micksideface.gif'
     },
-    3: {
+    {
+      id: 3,
       name: 'Scrooge McDuck',
       title: 'Project Manager',
       description: ``,
@@ -56,18 +61,16 @@ export class PeopleService {
       roles: ['Project Manager', 'Scrum Master'],
       skills: ['Project Management', 'Scrum', 'Kanban'],
       interests: ['Prince2', 'Princess3'],
-      picture: 'http://wondersofdisney.webs.com/pals/donald/donangryface.png'
-    },
-  };
+      picture: 'http://wondersofdisney.webs.com/comics/ultraheroes/scroogepenny.png'
+    }
+  ];
 
   public getPerson(id: number): Observable<Person> {
-    return Observable.of(this.data[id] as Person);
+    return Observable.of(this.data[id - 1] as Person);
   }
 
-  /*
   public getPeople(): Observable<Person[]> {
     return Observable.of(this.data as Person[]);
   }
-  */
 
 }

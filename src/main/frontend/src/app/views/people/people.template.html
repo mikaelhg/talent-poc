@@ -1,17 +1,30 @@
 <div class="wrapper wrapper-content">
   <div class="row">
 
-    <div class="col-lg-3">
+    <div class="col-lg-3" *ngFor="let person of people">
       <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
+        <a [routerLink]="['/people', person.id]">
           <div class="col-sm-4">
             <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a2.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
+              <img alt="image" class="img-circle circle-border m-t-xs img-responsive person-picture"
+                   [src]="person.picture">
+              <div class="m-t-xs font-bold">{{ person.title }}</div>
             </div>
           </div>
           <div class="col-sm-8">
-            <h3><strong>John Smith</strong></h3>
+            <h3><strong>{{ person.name }}</strong></h3>
+
+            <div class="tab-container">
+              <span *ngFor="let tag of person.locations">
+                <span class="tag-location">{{ tag }}</span>
+              </span>
+              <span *ngFor="let tag of person.roles">
+                <span class="tag-role">{{ tag }}</span>
+              </span>
+              <span *ngFor="let tag of person.skills">
+                <span class="tag-skill">{{ tag }}</span>
+              </span>
+            </div>
 
           </div>
           <div class="clearfix"></div>
@@ -19,224 +32,5 @@
       </div>
     </div>
 
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a1.jpg">
-              <div class="m-t-xs font-bold">CEO</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Alex Johnatan</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a3.jpg">
-              <div class="m-t-xs font-bold">Marketing manager</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Monica Smith</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a4.jpg">
-              <div class="m-t-xs font-bold">Sales manager</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Michael Zimber</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a5.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Sandra Smith</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a6.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Janet Carton</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a1.jpg">
-              <div class="m-t-xs font-bold">CEO</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Alex Johnatan</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a2.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>John Smith</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a3.jpg">
-              <div class="m-t-xs font-bold">Marketing manager</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Monica Smith</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a4.jpg">
-              <div class="m-t-xs font-bold">Sales manager</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Michael Zimber</strong></h3>
-
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a5.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Sandra Smith</strong></h3>
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a6.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Janet Carton</strong></h3>
-          </div>
-          <div class="clearfix"></div>
-        </a>
-
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a1.jpg">
-              <div class="m-t-xs font-bold">CEO</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>Alex Johnatan</strong></h3>
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="contact-box">
-        <a [routerLink]="['/people', 1]">
-          <div class="col-sm-4">
-            <div class="text-center">
-              <img alt="image" class="img-circle m-t-xs img-responsive" src="http://webapplayers.com/inspinia_admin-v2.7/img/a2.jpg">
-              <div class="m-t-xs font-bold">Graphics designer</div>
-            </div>
-          </div>
-          <div class="col-sm-8">
-            <h3><strong>John Smith</strong></h3>
-          </div>
-          <div class="clearfix"></div>
-        </a>
-      </div>
-    </div>
   </div>
 </div>
