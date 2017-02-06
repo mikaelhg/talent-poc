@@ -13,7 +13,7 @@ logging.level:
 server:
   error:
     whitelabel:
-      enabled: false
+      enabled: true
   session:
     timeout: 86400
   port: 9090

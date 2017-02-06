@@ -13,3 +13,11 @@ fun main(args: Array<String>) {
 
 @SpringBootApplication
 open class Application
+
+@Controller
+open class SinglePageController {
+
+    @GetMapping("/", "/app", "/app/", "/app/**", "/login", "/register")
+    fun singlePageApplication() = "forward:/index.html"
+
+}

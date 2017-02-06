@@ -3,7 +3,7 @@
 
     <div class="col-lg-3" *ngFor="let person of people">
       <div class="contact-box">
-        <a [routerLink]="['/people', person.id]">
+        <a [routerLink]="[person.id]">
           <div class="col-sm-4">
             <div class="text-center">
               <img alt="image" class="img-circle circle-border m-t-xs img-responsive person-picture"

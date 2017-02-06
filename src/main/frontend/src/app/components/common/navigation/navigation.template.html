@@ -19,26 +19,28 @@
         </div>
 
       </li>
-      <li [ngClass]="{active: activeRoute('projects')}">
-        <a [routerLink]="['/projects']">
-          <i class="fa fa-th-large"></i> <span class="nav-label">Projects</span>
-        </a>
-      </li>
-      <li [ngClass]="{active: activeRoute('people')}">
-        <a [routerLink]="['/people']">
-          <i class="fa fa-desktop"></i> <span class="nav-label">People</span>
-        </a>
-      </li>
-      <li [ngClass]="{active: activeRoute('teams')}">
-        <a [routerLink]="['/teams']">
-          <i class="fa fa-desktop"></i> <span class="nav-label">Teams</span>
-        </a>
-      </li>
+
       <li [ngClass]="{active: activeRoute('profile')}">
-        <a [routerLink]="['/profile']">
+        <a [routerLink]="['profile']">
           <i class="fa fa-desktop"></i> <span class="nav-label">Profile</span>
         </a>
       </li>
+      <li [ngClass]="{active: activeRoute('people')}">
+        <a [routerLink]="['people']">
+          <i class="fa fa-desktop"></i> <span class="nav-label">People</span>
+        </a>
+      </li>
+      <li [ngClass]="{active: activeRoute('projects')}">
+        <a [routerLink]="['projects']">
+          <i class="fa fa-th-large"></i> <span class="nav-label">Projects</span>
+        </a>
+      </li>
+      <li [ngClass]="{active: activeRoute('teams')}">
+        <a [routerLink]="['teams']">
+          <i class="fa fa-desktop"></i> <span class="nav-label">Teams</span>
+        </a>
+      </li>
+
     </ul>
   </div>
 </nav>
