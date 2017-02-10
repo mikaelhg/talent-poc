@@ -1,11 +1,11 @@
-import {Component, AfterViewInit, OnInit} from "@angular/core";
-import {Router, ActivatedRoute, Params} from "@angular/router";
-import {PeopleService, Person} from "../../services/people.service";
+import {Component, AfterViewInit, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import {PeopleService, Person} from '../../services/people.service';
 
 @Component({
   selector: 'personDetailComponent',
   templateUrl: './person-detail.template.html',
-  styleUrls: [ './person-detail.template.scss' ]
+  styleUrls: ['./person-detail.template.scss']
 })
 export class PersonDetailComponent implements AfterViewInit, OnInit {
 

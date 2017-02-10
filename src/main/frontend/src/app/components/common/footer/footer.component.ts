@@ -1,7 +1,8 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
 @Component({
-    selector: 'footer',
-    templateUrl: './footer.template.html'
+  selector: 'footer',
+  templateUrl: './footer.template.html'
 })
-export class FooterComponent { }
+export class FooterComponent {
+}

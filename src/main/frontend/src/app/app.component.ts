@@ -1,5 +1,5 @@
-import {Component, AfterViewInit} from "@angular/core";
-import {correctHeight, detectBody} from "./app.helpers";
+import {Component, AfterViewInit} from '@angular/core';
+import {correctHeight, detectBody} from './app.helpers';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent implements AfterViewInit {
 
   public ngAfterViewInit() {
     // Run correctHeight function on load and resize window event
-    jQuery(window).bind("load resize", function () {
+    jQuery(window).bind('load resize', () => {
       correctHeight();
       detectBody();
     });
@@ -19,7 +19,7 @@ export class AppComponent implements AfterViewInit {
     jQuery('.metismenu a').click(() => {
       setTimeout(() => {
         correctHeight();
-      }, 300)
+      }, 300);
     });
   }
 

@@ -1,6 +1,4 @@
-import {Component, AfterViewInit} from "@angular/core";
-
-declare const jQuery: any;
+import {Component, AfterViewInit} from '@angular/core';
 
 @Component({
   selector: 'teamsComponent',

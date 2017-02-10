@@ -10,10 +10,10 @@ declare const jQuery: JQueryStatic;
 })
 export class TopnavbarComponent {
 
-  private searchTerm: string;
+  public searchTerm: string;
 
   public toggleNavigation(): void {
-    jQuery("body").toggleClass("mini-navbar");
+    jQuery('body').toggleClass('mini-navbar');
     smoothlyMenu();
   }
 

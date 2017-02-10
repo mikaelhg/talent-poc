@@ -1,9 +1,9 @@
-import {Component, AfterViewInit, OnInit} from "@angular/core";
+import {Component, AfterViewInit, OnInit} from '@angular/core';
 
 @Component({
   selector: 'profileComponent',
   templateUrl: './profile.template.html',
-  styleUrls: [ './profile.template.scss' ]
+  styleUrls: ['./profile.template.scss']
 })
 export class ProfileComponent implements AfterViewInit, OnInit {
 
