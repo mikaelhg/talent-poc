@@ -35,6 +35,20 @@ data class Person(
 
     var name: String? = null,
 
+    var description: String? = null,
+
+    /*
+    var locations: List<String>? = null,
+
+    var roles: List<String>? = null,
+
+    var skills: List<String>? = null,
+
+    var interests: List<String>? = null,
+    */
+
+    var pictureUrl: String? = null,
+
     var lastSeenAt: ZonedDateTime? = null
 
 )

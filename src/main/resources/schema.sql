@@ -5,6 +5,10 @@ CREATE TABLE people (
   name         TEXT,
   title        TEXT,
   description  TEXT,
+  locations    ARRAY,
+  roles        ARRAY,
+  skills       ARRAY,
+  interests    ARRAY,
   picture_url  TEXT,
   PRIMARY KEY (id)
 );

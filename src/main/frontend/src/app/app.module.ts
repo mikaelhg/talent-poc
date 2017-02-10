@@ -15,6 +15,7 @@ import {ProjectsModule} from './views/projects/projects.module';
 import {PeopleModule} from './views/people/people.module';
 import {PeopleService} from './services/people.service';
 import {ProfileModule} from './views/profile/profile.module';
+import {LoginService} from './services/login.service';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {ProfileModule} from './views/profile/profile.module';
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
+    LoginService,
     PeopleService,
     {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],

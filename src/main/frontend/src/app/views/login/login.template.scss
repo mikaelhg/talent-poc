@@ -1,0 +1,17 @@
+.middle-box {
+  max-width: 500px;
+}
+
+.loginscreen.middle-box {
+  width: 500px;
+}
+
+.middle-box .form-group {
+  margin: auto;
+  text-align: center;
+}
+
+input[type=text], input[type=password], button {
+  margin: auto;
+  max-width: 300px;
+}

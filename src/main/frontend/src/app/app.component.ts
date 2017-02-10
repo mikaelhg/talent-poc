@@ -1,8 +1,6 @@
 import {Component, AfterViewInit} from "@angular/core";
 import {correctHeight, detectBody} from "./app.helpers";
 
-declare const jQuery: JQueryStatic;
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
