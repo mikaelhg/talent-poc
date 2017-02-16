@@ -12,21 +12,12 @@ cache:
 validate:
   stage: build
   script:
-    - 'mvn $MAVEN_CLI_OPTS compile'
-
-verify:
-  stage: test
-  script:
-    - 'mvn $MAVEN_CLI_OPTS test'
-  except:
-    - master
+    - 'mvn $MAVEN_CLI_OPTS clean test'
 
 deploy:
   stage: deploy
   script:
     - 'mvn $MAVEN_CLI_OPTS package'
-  only:
-    - master
   artifacts:
     paths:
     - target/*.jar

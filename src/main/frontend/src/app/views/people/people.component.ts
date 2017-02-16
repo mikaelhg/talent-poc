@@ -4,7 +4,7 @@ import {PeopleService, Person} from '../../services/people.service';
 @Component({
   selector: 'peopleComponent',
   templateUrl: './people.template.html',
-  styleUrls: [ './people.template.scss' ]
+  styleUrls: ['./people.template.scss']
 })
 export class PeopleComponent implements AfterViewInit, OnInit {
 

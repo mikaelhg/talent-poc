@@ -23,8 +23,16 @@ export class Person {
 
 }
 
+export abstract class PeopleService {
+
+  public abstract getPerson(id: number): Observable<Person>;
+
+  public abstract getPeople(): Observable<Person[]>;
+
+}
+
 @Injectable()
-export class PeopleService {
+export class MockPeopleService extends PeopleService {
 
   private data = [
     {
@@ -32,9 +40,9 @@ export class PeopleService {
       name: 'Donald Duck',
       title: 'Technical Architect',
       description: `Donald Duck is a cartoon character created in 1934 at Walt Disney Productions.
-     Donald is an anthropomorphic white duck with a yellow-orange bill, legs, and feet.
-      He typically wears a sailor shirt and cap with a bow tie.
-       Donald is most famous for his semi-intelligible speech and his mischievous and temperamental personality.`,
+        Donald is an anthropomorphic white duck with a yellow-orange bill, legs, and feet.
+        He typically wears a sailor shirt and cap with a bow tie.
+        Donald is most famous for his semi-intelligible speech and his mischievous and temperamental personality.`,
       locations: ['Helsinki'],
       roles: ['Architect', 'Developer'],
       skills: ['Java', 'Cloud', 'Mobile', 'Full Stack'],
