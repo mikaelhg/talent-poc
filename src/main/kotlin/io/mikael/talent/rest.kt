@@ -1,12 +1,10 @@
 package io.mikael.talent
 
-import io.mikael.talent.model.*
+import io.mikael.talent.model.Person
+import io.mikael.talent.model.Project
+import io.mikael.talent.model.Skill
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.rest.core.annotation.RepositoryRestResource
-
-/*
- * These interfaces will be magically transformed into fully functional REST endpoints. Maaaagic.
- */
 
 @RepositoryRestResource
 interface ProjectRepository : JpaRepository<Project, Long>

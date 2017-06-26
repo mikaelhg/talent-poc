@@ -21,7 +21,7 @@
     <properties>
         <java.version>1.8</java.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-        <kotlin.version>1.1.2-5</kotlin.version>
+        <kotlin.version>1.1.3</kotlin.version>
     </properties>
 
     <dependencies>
@@ -168,34 +168,32 @@
                 <version>1.4</version>
                 <configuration>
                     <workingDirectory>src/main/frontend</workingDirectory>
-                    <nodeVersion>v6.10.1</nodeVersion>
-                    <npmVersion>4.5.0</npmVersion>
+                    <nodeVersion>v6.11.0</nodeVersion>
+                    <yarnVersion>v0.24.6</yarnVersion>
                     <installDirectory>target</installDirectory>
                 </configuration>
                 <executions>
                     <execution>
                         <id>install node and npm</id>
                         <goals>
-                            <goal>install-node-and-npm</goal>
+                            <goal>install-node-and-yarn</goal>
                         </goals>
                         <phase>generate-resources</phase>
                     </execution>
                     <execution>
-                        <id>npm install</id>
+                        <id>yarn install</id>
                         <goals>
-                            <goal>npm</goal>
+                            <goal>yarn</goal>
                         </goals>
                         <configuration>
                             <arguments>install</arguments>
-                            <installDirectory>target</installDirectory>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>webpack build</id>
+                        <id>yarn ci-build</id>
                         <goals>
-                            <goal>npm</goal>
+                            <goal>yarn</goal>
                         </goals>
-                        <phase>generate-resources</phase>
                         <configuration>
                             <arguments>run ci-build</arguments>
                         </configuration>

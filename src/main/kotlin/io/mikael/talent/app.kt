@@ -1,20 +1,19 @@
 package io.mikael.talent
 
-import io.mikael.talent.model.Person
-import org.springframework.beans.factory.annotation.Autowired
-import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.constructor.Constructor
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.boot.ApplicationArguments
-import org.springframework.boot.ApplicationRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.core.env.Environment
-import org.springframework.core.io.Resource
-import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpHeaders
+import org.springframework.security.jwt.JwtHelper
+import org.springframework.security.jwt.crypto.sign.SignatureVerifier
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
-import java.io.InputStream
+import org.springframework.web.filter.OncePerRequestFilter
+import javax.servlet.*
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
 
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
@@ -31,30 +30,25 @@ open class SinglePageController {
 
 }
 
-//@Component
-open class DemoDataPopulator : ApplicationRunner {
+@Configuration
+open class DataRestAuthentication {
 
-    @Value("classpath:/data.yml")
-    private lateinit var dataFile: Resource
+    @Bean
+    open fun jwtFilter(@Value("jwt.key") key: String): Filter = JwtFilter(key)
 
-    @Autowired
-    private lateinit var env: Environment
+}
 
-    @Autowired
-    private lateinit var personRepository: PersonRepository
-
-    override fun run(args: ApplicationArguments) {
-        if (env.activeProfiles.contains("prod")) {
-            return
-        }
-        val c1 = Constructor(Person::class.java)
-        dataFile.inputStream.use { inputStream ->
-            Yaml(c1).loadAll<Person>(inputStream).forEach {
-                item: Person -> personRepository.save(item)
-            }
-        }
+private class JwtFilter(private val key: String) : OncePerRequestFilter() {
+//    private val verifier: SignatureVerifier
+    init {
+//        this.verifier = SignatureVerifier()
     }
-
-    private fun <T> Yaml.loadAll(inputStream: InputStream): Iterable<T> =
-        this.loadAll(inputStream) as Iterable<T>
+    override fun doFilterInternal(req: HttpServletRequest, res: HttpServletResponse, chain: FilterChain) {
+        val authorizationHeader = req.getHeader(HttpHeaders.AUTHORIZATION)
+        if (null != authorizationHeader) {
+            val token = authorizationHeader.split(" ")[1]
+            req.setAttribute("jwt", JwtHelper.decode(token))
+        }
+        chain.doFilter(req, res)
+    }
 }
