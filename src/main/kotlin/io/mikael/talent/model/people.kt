@@ -1,54 +1,73 @@
 package io.mikael.talent.model
 
+import org.hibernate.annotations.Type
+import org.hibernate.annotations.TypeDef
+import org.hibernate.annotations.TypeDefs
 import java.time.ZonedDateTime
 import javax.persistence.*
+import javax.persistence.GenerationType.IDENTITY
 
 /**
  * People. Can't live with them, but they go poorly with the nicer reds and whites.
  */
+@TypeDefs(TypeDef(name = "stringarray", typeClass = SqlStringArray::class))
 @Entity @Table(name = "people")
 data class Person(
 
-    @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @get:Id @get:GeneratedValue(strategy = IDENTITY)
     var id: Long? = null,
 
     /** Someone recommended a project to this person in private. */
-    @OneToMany(mappedBy = "target")
-    var privateTargetRecommendations: List<ProjectToPersonRecommendation>? = null,
+    @get:OneToMany(mappedBy = "target")
+    var privateTargetRecommendations: MutableList<ProjectToPersonRecommendation>? = mutableListOf(),
 
     /** Someone recommended this person for a project in public. */
-    @OneToMany(mappedBy = "target")
-    var publicTargetRecommendations: List<PersonToProjectRecommendation>? = null,
+    @get:OneToMany(mappedBy = "target")
+    var publicTargetRecommendations: MutableList<PersonToProjectRecommendation>? = mutableListOf(),
 
     /** This person recommended a project to someone in private. */
-    @OneToMany(mappedBy = "source")
-    var privateSourceRecommendations: List<ProjectToPersonRecommendation>? = null,
+    @get:OneToMany(mappedBy = "source")
+    var privateSourceRecommendations: MutableList<ProjectToPersonRecommendation>? = mutableListOf(),
 
     /** This person recommended someone for a project in public. */
-    @OneToMany(mappedBy = "source")
-    var publicSourceRecommendations: List<PersonToProjectRecommendation>? = null,
+    @get:OneToMany(mappedBy = "source")
+    var publicSourceRecommendations: MutableList<PersonToProjectRecommendation>? = mutableListOf(),
 
-    @OneToMany(mappedBy = "target")
-    var personalAbilities: List<PersonalAbility>? = null,
+    @get:OneToMany(mappedBy = "target")
+    var personalAbilities: MutableList<PersonalAbility>? = mutableListOf(),
 
-    var username: String? = null,
+    var username: String? = "",
 
-    var name: String? = null,
+    var name: String? = "",
 
-    var description: String? = null,
+    var title: String? = "",
 
-    /*
-    var locations: List<String>? = null,
+    var description: String? = "",
 
-    var roles: List<String>? = null,
+    @get:Type(type="stringarray")
+    @get:Column(columnDefinition = "TEXT[]")
+    var locations: MutableList<String>? = mutableListOf(),
 
-    var skills: List<String>? = null,
+    @get:Type(type="stringarray")
+    @get:Column(columnDefinition = "TEXT[]")
+    var roles: MutableList<String>? = mutableListOf(),
 
-    var interests: List<String>? = null,
-    */
+    @get:Type(type="stringarray")
+    @get:Column(columnDefinition = "TEXT[]")
+    var skills: MutableList<String>? = mutableListOf(),
 
-    var pictureUrl: String? = null,
+    @get:Type(type="stringarray")
+    @get:Column(columnDefinition = "TEXT[]")
+    var interests: MutableList<String>? = mutableListOf(),
 
-    var lastSeenAt: ZonedDateTime? = null
+    var pictureUrl: String? = "",
 
-)
+    var lastSeenAt: ZonedDateTime? = ZonedDateTime.now()
+
+) {
+
+    override fun toString(): String {
+        return "Person(id=$id, username=$username, name=$name, title=$title, locations=$locations, roles=$roles, skills=$skills, interests=$interests)"
+    }
+
+}

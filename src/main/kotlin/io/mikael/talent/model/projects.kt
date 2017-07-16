@@ -32,37 +32,37 @@ enum class ProjectStatus {
 }
 
 @Entity @Table(name = "projects")
-data class Project (
+data class Project(
 
-        @Id @GeneratedValue(strategy = IDENTITY)
-        var id: Long? = null,
+    @Id @GeneratedValue(strategy = IDENTITY)
+    var id: Long? = null,
 
-        @OneToMany(mappedBy = "project")
-        var privateRecommendations: List<ProjectToPersonRecommendation>? = null,
+    @OneToMany(mappedBy = "project")
+    var privateRecommendations: MutableList<ProjectToPersonRecommendation> = mutableListOf(),
 
-        @OneToMany(mappedBy = "project")
-        var publicRecommendations: List<PersonToProjectRecommendation>? = null,
+    @OneToMany(mappedBy = "project")
+    var publicRecommendations: MutableList<PersonToProjectRecommendation> = mutableListOf(),
 
-        @ManyToOne
-        var source: Person? = null,
+    @ManyToOne
+    var source: Person? = null,
 
-        var createdAt: ZonedDateTime? = null,
+    var createdAt: ZonedDateTime = ZonedDateTime.now(),
 
-        var updatedAt: ZonedDateTime? = null,
+    var updatedAt: ZonedDateTime = ZonedDateTime.now(),
 
-        var status: ProjectStatus? = null,
+    var status: ProjectStatus? = null,
 
-        var beginsAt: LocalDate? = null,
+    var beginsAt: LocalDate? = null,
 
-        var endsAt: LocalDate? = null,
+    var endsAt: LocalDate? = null,
 
-        var country: String? = null,
+    var country: String? = null,
 
-        var location: String? = null,
+    var location: String? = null,
 
-        var name: String? = null,
+    var name: String? = null,
 
-        var description: String? = null
+    var description: String? = null
 
 )
 
@@ -70,41 +70,41 @@ data class Project (
  * Person $SOURCE publicly recommends person $TARGET for project $PROJECT.
  */
 @Entity @Table(name = "recommend_people_for_projects")
-data class PersonToProjectRecommendation (
+data class PersonToProjectRecommendation(
 
-        @Id @GeneratedValue(strategy = IDENTITY)
-        var id: Long? = null,
+    @get:Id @get:GeneratedValue(strategy = IDENTITY)
+    var id: Long? = null,
 
-        @ManyToOne
-        var project: Project? = null,
+    @get:ManyToOne
+    var project: Project? = null,
 
-        @ManyToOne
-        var source: Person? = null,
+    @get:ManyToOne
+    var source: Person? = null,
 
-        @ManyToOne
-        var target: Person? = null,
+    @get:ManyToOne
+    var target: Person? = null,
 
-        var createdAt: ZonedDateTime? = null
+    var createdAt: ZonedDateTime = ZonedDateTime.now()
 )
 
 /**
  * Person $SOURCE privately recommends project $PROJECT to person $TARGET.
  */
 @Entity @Table(name = "recommend_projects_to_people")
-data class ProjectToPersonRecommendation (
+data class ProjectToPersonRecommendation(
 
-        @Id @GeneratedValue(strategy = IDENTITY)
-        var id: Long? = null,
+    @get:Id @get:GeneratedValue(strategy = IDENTITY)
+    var id: Long? = null,
 
-        @ManyToOne
-        var project: Project? = null,
+    @get:ManyToOne
+    var project: Project? = null,
 
-        @ManyToOne
-        var source: Person? = null,
+    @get:ManyToOne
+    var source: Person? = null,
 
-        @ManyToOne
-        var target: Person? = null,
+    @get:ManyToOne
+    var target: Person? = null,
 
-        var createdAt: ZonedDateTime? = null
+    var createdAt: ZonedDateTime = ZonedDateTime.now()
 
 )

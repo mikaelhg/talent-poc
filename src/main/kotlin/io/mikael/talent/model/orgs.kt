@@ -1,6 +1,7 @@
 package io.mikael.talent.model
 
 import javax.persistence.*
+import javax.persistence.GenerationType.IDENTITY
 
 /**
  * A customer, an employer.
@@ -8,17 +9,17 @@ import javax.persistence.*
 @Entity @Table(name = "organizations")
 data class Organization(
 
-    @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @get:Id @get:GeneratedValue(strategy = IDENTITY)
     var id: Long? = null,
 
     /**
      * Is this organization subsidiary to a larger one?
      */
-    @ManyToOne
+    @get:ManyToOne
     var parent: Organization? = null,
 
-    var name: String? = null,
+    var name: String = "",
 
-    var description: String? = null
+    var description: String = ""
 
 )
