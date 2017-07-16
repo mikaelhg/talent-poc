@@ -6,32 +6,38 @@ import java.io.Serializable
 import java.sql.PreparedStatement
 import java.sql.ResultSet
 
+/**
+ * PostgreSQL / H2 array type.
+ */
 open class SqlStringArray : UserType {
 
-    override fun hashCode(x: Any?) = x?.hashCode() ?: 0
+    override fun hashCode(x: Any?): Int = x?.hashCode() ?: 0
 
-    override fun equals(x: Any?, y: Any?) = x == y
+    override fun equals(x: Any?, y: Any?): Boolean = x == y
 
-    override fun replace(original: Any?, target: Any?, owner: Any?) = original ?: mutableListOf<String>()
+    override fun replace(original: Any?, target: Any?, owner: Any?): Any
+        = original ?: mutableListOf<String>()
 
-    override fun returnedClass() = MutableList::class.java
+    override fun returnedClass(): Class<MutableList<*>>
+        = MutableList::class.java
 
-    override fun assemble(cached: Serializable?, owner: Any?) = cached ?: mutableListOf<String>()
+    override fun assemble(cached: Serializable?, owner: Any?): Serializable
+        = cached ?: mutableListOf<String>() as Serializable
 
-    override fun disassemble(value: Any?) = value as Serializable
+    override fun disassemble(value: Any?): Serializable
+        = value as Serializable
 
-    override fun isMutable() = false
+    override fun isMutable(): Boolean = false
 
-    override fun sqlTypes() = intArrayOf(java.sql.Types.ARRAY)
+    override fun sqlTypes(): IntArray = intArrayOf(java.sql.Types.ARRAY)
 
     @Suppress("UNCHECKED_CAST")
-    override fun deepCopy(value: Any?): Any {
+    override fun deepCopy(value: Any?): MutableList<String> {
         val ret = mutableListOf<String>()
         if (value != null && value is MutableList<*>) {
-            return ret.addAll(value as MutableList<String>)
-        } else {
-            return ret
+            ret.addAll(value as MutableList<String>)
         }
+        return ret
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -40,8 +46,8 @@ open class SqlStringArray : UserType {
         return a1?.map { it.toString() }?.toMutableList() ?: mutableListOf<String>()
     }
 
-    override fun nullSafeSet(st: PreparedStatement, value: Any, index: Int, session: SessionImplementor) {
-        if (value !is MutableList<*>) return
+    override fun nullSafeSet(st: PreparedStatement, value: Any?, index: Int, session: SessionImplementor) {
+        if (value == null || value !is MutableList<*>) return
         st.setArray(index, session.connection().createArrayOf("string", value.toTypedArray()))
     }
 

@@ -169,7 +169,7 @@
                 <configuration>
                     <workingDirectory>src/main/frontend</workingDirectory>
                     <nodeVersion>v6.11.0</nodeVersion>
-                    <yarnVersion>v0.24.6</yarnVersion>
+                    <yarnVersion>v0.27.5</yarnVersion>
                     <installDirectory>target</installDirectory>
                 </configuration>
                 <executions>

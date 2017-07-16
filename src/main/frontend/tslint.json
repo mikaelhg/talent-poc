@@ -30,6 +30,7 @@
       "trace"
     ],
     "max-line-length": [ true, 120 ],
+    "max-classes-per-file": [ false ],
     "no-string-literal": false,
     "no-use-before-declare": true,
     "object-literal-sort-keys": false,

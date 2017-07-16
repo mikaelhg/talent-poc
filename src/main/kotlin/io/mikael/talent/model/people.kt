@@ -10,7 +10,7 @@ import javax.persistence.GenerationType.IDENTITY
 /**
  * People. Can't live with them, but they go poorly with the nicer reds and whites.
  */
-@TypeDefs(TypeDef(name = "stringarray", typeClass = SqlStringArray::class))
+@TypeDefs(TypeDef(name = "string-array", typeClass = SqlStringArray::class))
 @Entity @Table(name = "people")
 data class Person(
 
@@ -44,20 +44,20 @@ data class Person(
 
     var description: String? = "",
 
-    @get:Type(type="stringarray")
     @get:Column(columnDefinition = "TEXT[]")
+    @get:Type(type="string-array")
     var locations: MutableList<String>? = mutableListOf(),
 
-    @get:Type(type="stringarray")
     @get:Column(columnDefinition = "TEXT[]")
+    @get:Type(type="string-array")
     var roles: MutableList<String>? = mutableListOf(),
 
-    @get:Type(type="stringarray")
     @get:Column(columnDefinition = "TEXT[]")
+    @get:Type(type="string-array")
     var skills: MutableList<String>? = mutableListOf(),
 
-    @get:Type(type="stringarray")
     @get:Column(columnDefinition = "TEXT[]")
+    @get:Type(type="string-array")
     var interests: MutableList<String>? = mutableListOf(),
 
     var pictureUrl: String? = "",

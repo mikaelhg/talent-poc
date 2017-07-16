@@ -10,6 +10,7 @@ import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
 import org.yaml.snakeyaml.Yaml
 import org.yaml.snakeyaml.constructor.Constructor
+import javax.transaction.Transactional
 
 @Component
 open class DemoDataPopulator : ApplicationRunner {
@@ -27,13 +28,16 @@ open class DemoDataPopulator : ApplicationRunner {
         private val pc = Constructor(Person::class.java)
     }
 
+    @Transactional
     override fun run(args: ApplicationArguments) {
         if (env.activeProfiles.contains("prod")) {
             return
         }
+        println("Inserting some demo data...")
         dataFile.inputStream.use {
             Yaml(pc).loadAll(it)
                 .map { it as Person }
+                .onEach { println("$it") }
                 .map(personRepository::save)
         }
     }

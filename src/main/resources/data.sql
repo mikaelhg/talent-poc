@@ -1,3 +1,4 @@
+/*
 INSERT INTO
   people (username, name)
 VALUES
@@ -34,3 +35,4 @@ VALUES
   ((SELECT id FROM skills WHERE tag = 'project-management'),
    (SELECT id FROM people WHERE username = 'duckdon'), 1)
 ;
+*/
