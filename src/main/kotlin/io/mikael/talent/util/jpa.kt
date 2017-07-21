@@ -1,4 +1,4 @@
-package io.mikael.talent.model
+package io.mikael.talent.util
 
 import org.hibernate.engine.spi.SessionImplementor
 import org.hibernate.usertype.UserType
@@ -47,7 +47,7 @@ open class SqlStringArray : UserType {
     }
 
     override fun nullSafeSet(st: PreparedStatement, value: Any?, index: Int, session: SessionImplementor) {
-        if (value == null || value !is MutableList<*>) return
+        if (value == null || value !is List<*>) return
         st.setArray(index, session.connection().createArrayOf("string", value.toTypedArray()))
     }
 

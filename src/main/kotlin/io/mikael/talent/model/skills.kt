@@ -2,6 +2,7 @@ package io.mikael.talent.model
 
 import java.time.ZonedDateTime
 import javax.persistence.*
+import javax.persistence.GenerationType.IDENTITY
 
 /**
  * The abstract "Java Programming" is a skill.
@@ -9,7 +10,7 @@ import javax.persistence.*
 @Entity @Table(name = "skills")
 data class Skill(
 
-    @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = IDENTITY)
     var id: Long? = null,
 
     @OneToMany(mappedBy = "skill")
@@ -29,7 +30,7 @@ data class Skill(
 @Entity @Table(name = "personal_abilities")
 data class PersonalAbility(
 
-    @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = IDENTITY)
     var id: Long? = null,
 
     @ManyToOne
@@ -38,8 +39,11 @@ data class PersonalAbility(
     @ManyToOne
     var skill: Skill? = null,
 
-    /** How interested the person is in applying this skill in their next project. */
-    var personalInterestLevel: Double? = 0.0,
+    /**
+     * How interested the person is in applying this skill in their next project.
+     * From -1.0 (I completely refuse to work with this) to +1.0 (who do I need to kill?)
+     */
+    var personalInterestLevel: Double = 0.0,
 
     var createdAt: ZonedDateTime? = null,
 
@@ -61,7 +65,7 @@ data class PersonalAbility(
 @Entity @Table(name = "thumb_personal_abilities")
 data class PersonalAbilityThumbs(
 
-    @Id @GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = IDENTITY)
     var id: Long? = null,
 
     @ManyToOne

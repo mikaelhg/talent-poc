@@ -27,3 +27,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+
+jwt.secret: 123123123123
+jwt.issuer: argle

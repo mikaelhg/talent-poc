@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "The JWT synchronous secret."
+    },
+    {
+      "name": "jwt.issuer",
+      "type": "java.lang.String",
+      "description": "The JWT issuer string."
+    }
+  ]
+}

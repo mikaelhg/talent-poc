@@ -27,13 +27,24 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-jwt</artifactId>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <dependency>
@@ -140,6 +151,25 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>kapt</id>
+                        <goals>
+                            <goal>kapt</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>src/main/kotlin</sourceDir>
+                                <sourceDir>src/main/resources</sourceDir>
+                            </sourceDirs>
+                            <annotationProcessorPaths>
+                                <annotationProcessorPath>
+                                    <groupId>org.springframework.boot</groupId>
+                                    <artifactId>spring-boot-configuration-processor</artifactId>
+                                    <version>1.5.4.RELEASE</version>
+                                </annotationProcessorPath>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>compile</id>
                         <phase>compile</phase>
                         <goals>
@@ -195,7 +225,7 @@
                             <goal>yarn</goal>
                         </goals>
                         <configuration>
-                            <arguments>run ci-build</arguments>
+                            <arguments>run build</arguments>
                         </configuration>
                     </execution>
                 </executions>

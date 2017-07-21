@@ -50,7 +50,7 @@ data class Project(
 
     var updatedAt: ZonedDateTime = ZonedDateTime.now(),
 
-    var status: ProjectStatus? = null,
+    var status: ProjectStatus = ProjectStatus.DRAFT,
 
     var beginsAt: LocalDate? = null,
 

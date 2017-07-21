@@ -9,11 +9,15 @@ import org.springframework.core.env.Environment
 import org.springframework.core.io.Resource
 import org.springframework.stereotype.Component
 import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.constructor.Constructor
 import javax.transaction.Transactional
 
 @Component
-open class DemoDataPopulator : ApplicationRunner {
+class DemoDataPopulator : ApplicationRunner {
+
+    companion object {
+        private val log = org.slf4j.LoggerFactory.getLogger(DemoDataPopulator::class.java)
+        private val pc = org.yaml.snakeyaml.constructor.Constructor(Person::class.java)
+    }
 
     @Value("classpath:/data.yml")
     private lateinit var dataFile: Resource
@@ -24,20 +28,16 @@ open class DemoDataPopulator : ApplicationRunner {
     @Autowired
     private lateinit var personRepository: PersonRepository
 
-    companion object {
-        private val pc = Constructor(Person::class.java)
-    }
-
     @Transactional
     override fun run(args: ApplicationArguments) {
-        if (env.activeProfiles.contains("prod")) {
+        if ("prod" in env.activeProfiles) {
             return
         }
-        println("Inserting some demo data...")
+        log.info("Inserting some demo data...")
         dataFile.inputStream.use {
             Yaml(pc).loadAll(it)
                 .map { it as Person }
-                .onEach { println("$it") }
+                .onEach { log.info("$it") }
                 .map(personRepository::save)
         }
     }

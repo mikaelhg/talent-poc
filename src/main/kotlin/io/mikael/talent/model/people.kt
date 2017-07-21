@@ -1,5 +1,6 @@
 package io.mikael.talent.model
 
+import io.mikael.talent.util.SqlStringArray
 import org.hibernate.annotations.Type
 import org.hibernate.annotations.TypeDef
 import org.hibernate.annotations.TypeDefs
@@ -8,7 +9,7 @@ import javax.persistence.*
 import javax.persistence.GenerationType.IDENTITY
 
 /**
- * People. Can't live with them, but they go poorly with the nicer reds and whites.
+ * People. Can't live with them, but they match poorly with the nicer reds and whites.
  */
 @TypeDefs(TypeDef(name = "string-array", typeClass = SqlStringArray::class))
 @Entity @Table(name = "people")
