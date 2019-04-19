@@ -23,7 +23,7 @@ data class JwtConfiguration(
 class JwtFilter(secret: String, issuer: String) : OncePerRequestFilter() {
 
     companion object {
-        val JWT_KEY = "jwt"
+        const val JWT_KEY = "jwt"
     }
 
     private val verifier = JWT.require(Algorithm.HMAC256(secret)).withIssuer(issuer).build()

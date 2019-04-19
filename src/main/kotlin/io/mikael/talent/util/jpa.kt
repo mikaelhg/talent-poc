@@ -1,6 +1,6 @@
 package io.mikael.talent.util
 
-import org.hibernate.engine.spi.SessionImplementor
+import org.hibernate.engine.spi.SharedSessionContractImplementor
 import org.hibernate.usertype.UserType
 import java.io.Serializable
 import java.sql.PreparedStatement
@@ -41,14 +41,14 @@ open class SqlStringArray : UserType {
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun nullSafeGet(rs: ResultSet?, names: Array<out String>?, session: SessionImplementor, owner: Any): Any {
+    override fun nullSafeGet(rs: ResultSet?, names: Array<out String>?, session: SharedSessionContractImplementor?, owner: Any?): Any? {
         val a1 = rs?.getArray(names?.get(0))?.array as Array<Any?>?
         return a1?.map { it.toString() }?.toMutableList() ?: mutableListOf<String>()
     }
 
-    override fun nullSafeSet(st: PreparedStatement, value: Any?, index: Int, session: SessionImplementor) {
+    override fun nullSafeSet(st: PreparedStatement?, value: Any?, index: Int, session: SharedSessionContractImplementor?) {
         if (value == null || value !is List<*>) return
-        st.setArray(index, session.connection().createArrayOf("string", value.toTypedArray()))
+        st?.setArray(index, session?.connection()?.createArrayOf("string", value.toTypedArray()))
     }
 
 }
