@@ -3,6 +3,7 @@ package io.mikael.talent.model
 import java.time.LocalDate
 import java.time.ZonedDateTime
 import javax.persistence.*
+import javax.persistence.FetchType.LAZY
 import javax.persistence.GenerationType.IDENTITY
 
 enum class ProjectStatus {
@@ -37,10 +38,10 @@ data class Project(
     @Id @GeneratedValue(strategy = IDENTITY)
     var id: Long? = null,
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = LAZY)
     var privateRecommendations: MutableList<ProjectToPersonRecommendation> = mutableListOf(),
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = LAZY)
     var publicRecommendations: MutableList<PersonToProjectRecommendation> = mutableListOf(),
 
     @ManyToOne

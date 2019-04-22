@@ -6,6 +6,7 @@ import org.hibernate.annotations.TypeDef
 import org.hibernate.annotations.TypeDefs
 import java.time.ZonedDateTime
 import javax.persistence.*
+import javax.persistence.FetchType.LAZY
 import javax.persistence.GenerationType.IDENTITY
 
 /**
@@ -19,22 +20,22 @@ data class Person(
     var id: Long? = null,
 
     /** Someone recommended a project to this person in private. */
-    @get:OneToMany(mappedBy = "target")
+    @get:OneToMany(mappedBy = "target", fetch = LAZY)
     var privateTargetRecommendations: MutableList<ProjectToPersonRecommendation>? = mutableListOf(),
 
     /** Someone recommended this person for a project in public. */
-    @get:OneToMany(mappedBy = "target")
+    @get:OneToMany(mappedBy = "target", fetch = LAZY)
     var publicTargetRecommendations: MutableList<PersonToProjectRecommendation>? = mutableListOf(),
 
     /** This person recommended a project to someone in private. */
-    @get:OneToMany(mappedBy = "source")
+    @get:OneToMany(mappedBy = "source", fetch = LAZY)
     var privateSourceRecommendations: MutableList<ProjectToPersonRecommendation>? = mutableListOf(),
 
     /** This person recommended someone for a project in public. */
-    @get:OneToMany(mappedBy = "source")
+    @get:OneToMany(mappedBy = "source", fetch = LAZY)
     var publicSourceRecommendations: MutableList<PersonToProjectRecommendation>? = mutableListOf(),
 
-    @get:OneToMany(mappedBy = "target")
+    @get:OneToMany(mappedBy = "target", fetch = LAZY)
     var personalAbilities: MutableList<PersonalAbility>? = mutableListOf(),
 
     var username: String? = "",

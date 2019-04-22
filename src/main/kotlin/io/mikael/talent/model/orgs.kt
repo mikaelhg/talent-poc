@@ -1,6 +1,7 @@
 package io.mikael.talent.model
 
 import javax.persistence.*
+import javax.persistence.FetchType.LAZY
 import javax.persistence.GenerationType.IDENTITY
 
 /**
@@ -15,7 +16,7 @@ data class Organization(
     /**
      * Is this organization subsidiary to a larger one?
      */
-    @get:ManyToOne
+    @get:ManyToOne(fetch = LAZY)
     var parent: Organization? = null,
 
     var name: String = "",
