@@ -34,8 +34,8 @@ class DemoDataPopulator : ApplicationRunner {
             return
         }
         log.info("Inserting some demo data...")
-        dataFile.inputStream.use {
-            Yaml(pc).loadAll(it)
+        dataFile.inputStream.use { inputStream ->
+            Yaml(pc).loadAll(inputStream)
                 .map { it as Person }
                 .onEach { log.info("$it") }
                 .map(personRepository::save)
